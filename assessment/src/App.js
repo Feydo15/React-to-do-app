@@ -66,14 +66,15 @@ function App() {
   };
   return (
     <div className="App">
-      <form onSubmit={isEditing ? saveEdit : handleSubmit}>
-        <h1> {isEditing ? "Edit Todo" : "ADD Todo"} </h1>
+      <h1>React Todo App </h1>
+      <form className="border" onSubmit={isEditing ? saveEdit : handleSubmit}>
+        <h2> {isEditing ? "Edit Todo" : "ADD Todo"} </h2>
         <div className="form-group">
-          <label>Todo Name:</label>
+          <label>Task Name:</label>
           <input
             type="text"
             className="form-control"
-            placeholder="todoName"
+            placeholder="task"
             name="todoName"
             value={form.todoName}
             onChange={handleChange}
@@ -98,6 +99,15 @@ function App() {
         {" "}
         <List list={list} deleteItem={deleteItem} editTodo={editTodo} />
       </div>
+      <div style={{ display: list.length > 0 ? "block" : "none" }}>
+      <button
+     className="btn btn-danger btn-md "
+     onClick={() => setList([])}
+   >
+     REMOVE ALL
+   </button>
+      </div>
+      
     </div>
   );
 }

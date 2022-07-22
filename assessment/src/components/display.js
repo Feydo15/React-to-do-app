@@ -5,12 +5,15 @@ function List(props) {
   const { list, deleteItem, editTodo } = props;;
   console.log('props :>> ', props);
   return (
-    <div>
+    <div  style={{ display: list.length > 0 ? "block" : "none" }}>
+      <h2>Todo List</h2>
       <table className="table table-striped">
         <thead>
           <tr styles={{width: '20%'}}>
-            <th styles={{width: '20%'}}>Todo Name</th>
+            <th styles={{width: '20%'}}>Task Name</th>
             <th styles={{width: '20%'}}>Description</th>
+            <th styles={{width: '20%'}}>Edit</th>
+            <th styles={{width: '20%'}}>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -23,9 +26,9 @@ function List(props) {
                 <td>{<button className="btn btn-secondary btn-md"
                 onClick={()=>editTodo(item.id)}
                     >Edit</button>}</td>
-                <td>{<button className="btn btn-danger btn-md"
+                <td>{<span className="btn btn-danger btn-md"
                  onClick={() => deleteItem(item.id)}>
-                Delete</button>}</td>
+                &times;</span>}</td>
               </tr>
               );
           })}
